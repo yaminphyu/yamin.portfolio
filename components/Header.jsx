@@ -14,14 +14,47 @@ export default function Header() {
 
     const handleMobileToggle = () => {
         if (toggle) {
-            setIsVisible(false);
-            setTimeout(() => {
-                setToggle(false);
-            }, 500);
+            // When closing the toggle
+            closeToggle();
         } else {
-            setToggle(true);
-            setIsVisible(true);
+            // When opening the toggle
+            openToggle();
         }
+    };
+
+    const openToggle = () => {
+        const scrollPosition = window.pageYOffset;
+
+          // Disable body scroll
+          document.body.style.position = 'fixed';
+          document.body.style.top = `-${scrollPosition}px`;
+          document.body.style.width = '100%';
+          document.body.style.overflow = 'hidden';
+
+          // Start animation and set toggle after starting
+          setIsVisible(true); // Set animation before toggle
+          setToggle(true);
+    };
+
+    const closeToggle = () => {
+      // When closing the sidebar
+      const scrollPosition = parseInt(document.body.style.top, 10) * -1;
+
+      // Trigger animation
+      setIsVisible(false); // Set animation state
+
+      // Wait for animation to complete before restoring scroll
+      setTimeout(() => {
+        // Restore body scroll
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+
+        window.scrollTo(0, scrollPosition); // Scroll back to the original position
+
+        setToggle(false); // Complete toggle after animation
+      }, 500); // Match animation duration
     };
 
     useEffect(() => {
