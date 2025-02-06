@@ -11,7 +11,7 @@
 }
 
 .title {
-    @apply uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-widest;
+    @apply uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-widest animate-slide-in-up;
 }
 
 .description {
@@ -23,7 +23,7 @@
 }
 
 .button-wrapper {
-    @apply w-[153px] sm:w-44 inline-block rounded-xl p-[2px];
+    @apply w-[153px] sm:w-44 inline-block rounded-xl p-[2px] animate-slide-in-up;
 
     background: linear-gradient(90deg, rgb(43, 203, 214) 0%, rgba(214, 52, 166) 38%, rgb(146, 12, 199) 95%);
 }
@@ -37,7 +37,7 @@
 }
 
 .profile-image {
-    @apply mt-0 md:-mt-3 lg:mt-[-4vh] w-[410px] lg:w-[500px] h-full;
+    @apply mt-0 md:-mt-3 lg:mt-[-4vh] w-[410px] lg:w-[500px] h-full animate-slide-in-up;
 }
 
 /* redmi 10 */
