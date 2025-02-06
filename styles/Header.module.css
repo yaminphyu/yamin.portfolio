@@ -39,7 +39,7 @@
 }
 
 .mobile-toggle {
-    @apply flex flex-col justify-center w-[94vw] md:w-[91vw] xl:w-[80vw] h-[32vh] md:h-[25vh] bg-[#2a1756] border-2 border-[#2a1756] absolute mt-[43vh] md:mt-[34vh] rounded-xl;
+    @apply flex flex-col justify-center w-[94vw] md:w-[91vw] xl:w-[80vw] h-[32vh] md:h-[25vh] bg-primary border-2 border-primary absolute mt-[43vh] md:mt-[34vh] rounded-xl;
 }
 
 .mobile-toggle-menu {

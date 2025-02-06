@@ -2,26 +2,26 @@ export const menu = [
     {
         id: 1,
         title: 'Services',
-        url: '/services'
+        url: '/#services'
     },
     {
         id: 2,
         title: 'Technologies',
-        url: '/technologies'
+        url: '/#technologies'
     },
     {
         id: 3,
         title: 'Resume',
-        url: '/resume'
+        url: '/#resume'
     },
     {
         id: 4,
         title: 'Portfolio',
-        url: '/portfolio'
+        url: '/#portfolio'
     },
     {
         id: 5,
         title: 'Contact',
-        url: '/contact'
+        url: '/#contact'
     },
 ]

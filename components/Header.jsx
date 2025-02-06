@@ -14,11 +14,9 @@ export default function Header() {
 
     const handleMobileToggle = () => {
         if (toggle) {
-            // When closing the toggle
-            closeToggle();
+            closeToggle(); // When closing the toggle
         } else {
-            // When opening the toggle
-            openToggle();
+            openToggle(); // When opening the toggle
         }
     };
 
@@ -37,7 +35,6 @@ export default function Header() {
     };
 
     const closeToggle = () => {
-      // When closing the sidebar
       const scrollPosition = parseInt(document.body.style.top, 10) * -1;
 
       // Trigger animation
@@ -54,12 +51,12 @@ export default function Header() {
         window.scrollTo(0, scrollPosition); // Scroll back to the original position
 
         setToggle(false); // Complete toggle after animation
-      }, 500); // Match animation duration
+      }, 500);
     };
 
     useEffect(() => {
         width > 1020 && setToggle(false);
-    }, [width])
+    }, [width]);
 
     return (
         <section
