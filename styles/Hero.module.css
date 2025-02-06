@@ -29,7 +29,7 @@
 }
 
 .button {
-  @apply bg-[#0E071E] text-white py-3 px-5 sm:px-6 text-sm sm:text-base font-medium border-none cursor-pointer uppercase block rounded-xl;
+  @apply bg-background text-white py-3 px-5 sm:px-6 text-sm sm:text-base font-medium border-none cursor-pointer uppercase block rounded-xl;
 }
 
 .profile {
@@ -37,5 +37,34 @@
 }
 
 .profile-image {
-    @apply mt-16 md:-mt-3 lg:mt-[-4vh] w-[410px] lg:w-[500px] h-full;
+    @apply mt-0 md:-mt-3 lg:mt-[-4vh] w-[410px] lg:w-[500px] h-full;
+}
+
+/* redmi 10 */
+@media screen and (min-width: 393px) and (max-width: 395px) and (min-height: 764px) {
+    .button-wrapper {
+        @apply w-[145px];
+    }
+}
+
+/* iphone 15pro */
+@media screen and (min-width: 390px) and (max-width: 392px) {
+    .button-wrapper {
+        @apply w-[150px];
+    }
+}
+
+/* iphone x */
+@media screen and (max-width: 390px) and (max-height: 844px) {
+    .profile-image {
+        @apply mt-16;
+    }
+
+    .button-wrapper {
+        @apply w-[145px];
+    }
+
+    .button {
+        @apply px-4;
+    }
 }
