@@ -1,9 +1,9 @@
 .container {
-    @apply w-full h-[12vh] p-3 md:p-10 lg:p-3 box-border flex flex-row justify-center items-center fixed z-50 top-2 bg-background;
+    @apply w-full h-[12vh] p-3 md:p-10 lg:p-3 box-border flex flex-col justify-center items-center fixed z-50 top-2 bg-background;
 }
 
 .wrapper {
-    @apply w-full lg:w-[90vw] xl:w-[80vw] p-5 box-border flex flex-row justify-between items-center border-[1px] border-gray-600 rounded-xl;
+    @apply w-full lg:w-[90vw] xl:w-[80vw] p-5 box-border flex flex-row justify-between items-center border-[1px] border-gray-600 rounded-xl z-50;
 }
 
 .title {
@@ -27,5 +27,21 @@
 }
 
 .icon {
-    @apply text-xl;
+    @apply text-xl md:text-2xl;
+}
+
+.mobile-menu {
+    @apply block lg:hidden;
+}
+
+.mobile-menu-icon {
+    @apply text-3xl md:text-4xl font-bold p-1 border-2 border-white rounded-full bg-white text-background cursor-pointer;
+}
+
+.mobile-toggle {
+    @apply flex flex-col justify-center w-[94vw] md:w-[91vw] xl:w-[80vw] h-[32vh] md:h-[25vh] bg-[#2a1756] border-2 border-[#2a1756] absolute mt-[43vh] md:mt-[34vh] rounded-xl;
+}
+
+.mobile-toggle-menu {
+    @apply flex flex-col justify-center items-center gap-2 p-4;
 }
