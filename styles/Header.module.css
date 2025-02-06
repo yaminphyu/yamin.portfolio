@@ -1,0 +1,31 @@
+.container {
+    @apply w-full h-[12vh] p-3 md:p-10 lg:p-3 box-border flex flex-row justify-center items-center fixed z-50 top-0 bg-background;
+}
+
+.wrapper {
+    @apply w-full lg:w-[90vw] xl:w-[80vw] p-5 box-border flex flex-row justify-between items-center border-[1px] border-gray-600 rounded-xl;
+}
+
+.title {
+    @apply uppercase text-3xl font-semibold tracking-widest cursor-pointer;
+}
+
+.menu-list {
+    @apply w-full hidden lg:flex flex-row justify-center items-center;
+}
+
+.menu-list ul {
+    @apply flex gap-5;
+}
+
+.menu-list ul li {
+    @apply inline-block mx-2;
+}
+
+.socials {
+    @apply flex flex-row justify-end items-center gap-3;
+}
+
+.icon {
+    @apply text-xl;
+}
