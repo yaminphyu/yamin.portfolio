@@ -93,3 +93,26 @@ export const skills = [
         icon: '/skills/npm.png'
     }
 ];
+
+export const aboutMe = [
+    {
+        id: 1,
+        title: 'first paragraph',
+        description: 'I have over four years of experience in web design and development, with a strong specialization in PHP, particularly with the Laravel framework, as well as modern JavaScript frameworks like ReactJS and NextJS.'
+    },
+    {
+        id: 2,
+        title: 'second paragraph',
+        description: 'As a quick learner, I can efficiently adapt to new technologies and frameworks, always striving to stay up-to-date with industry trends and best practices. My passion for coding and problem-solving is the driving force behind my career choice, and I find great satisfaction in overcoming technical challenges.'
+    },
+    {
+        id: 3,
+        title: 'third paragraph',
+        description: 'I thrive in collaborative team environments, where I can contribute my expertise while learning from others. My goal is to evolve into a well-rounded Full-Stack Developer with deep knowledge of both frontend and backend technologies. Debugging and troubleshooting issues are aspects of development that I particularly enjoy, as they push me to think critically and refine my problem-solving skills.'
+    },
+    {
+        id: 4,
+        title: 'fourth paragraph',
+        description: 'Beyond technical expertise, I am committed to writing clean, maintainable code and following industry standards to build scalable and efficient applications. I am excited about opportunities to work on innovative projects that challenge me to grow as a developer and make a meaningful impact in the field of software development.'
+    }
+];

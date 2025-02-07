@@ -1,48 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { skills } from "@/config";
+import indexStyles from '@/styles/Index.module.css';
 import styles from "@/styles/Skills.module.css";
+import useAnimation from "@/hooks/useAnimation";
 
 export default function Skills() {
     const skillRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            { threshold: 0.3 } // Adjust the visibility threshold as needed
-        );
-
-        if (skillRef.current) {
-            observer.observe(skillRef.current);
-        }
-
-        return () => {
-            if (skillRef.current) {
-                observer.unobserve(skillRef.current);
-            }
-            observer.disconnect();
-        };
-    }, []); // Run only once when the component mounts
+    const isVisible = useAnimation({ targetRef: skillRef });
 
     return (
         <section
             id="skills"
-            className={styles.container}
+            className={indexStyles.container}
         >
-            <div className={styles.wrapper}>
-                <h1 className={styles.title}>
+            <div className={indexStyles.wrapper}>
+                <h1 className={indexStyles.title}>
                     Skills
                 </h1>
                 <div
                     ref={skillRef}
                     className={`
-                        ${styles['skill-container']}
+                        ${styles['container']}
                         ${ isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10" }
                     `}
                 >

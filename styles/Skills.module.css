@@ -1,20 +1,8 @@
 .container {
-    @apply w-full h-screen p-3 md:p-10 lg:p-3 flex flex-row justify-center;
-}
-
-.wrapper {
-    @apply flex flex-col w-full lg:w-[90vw] xl:w-[80vw] items-center p-2 mt-[12vh];
-}
-
-.title {
-    @apply uppercase text-3xl sm:text-4xl md:text-5xl font-medium tracking-widest text-center py-10;
-}
-
-.skill-container {
     @apply w-[80vw] h-[50vh] flex flex-col justify-center items-center gap-10 mt-5 md:mt-0 transition-opacity duration-[1500ms] ease-in-out;
 }
 
-.skill-container h2 {
+.container h2 {
     @apply text-lg sm:text-2xl font-medium tracking-wider text-center;
 }
 

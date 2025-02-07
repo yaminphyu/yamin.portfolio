@@ -1,0 +1,11 @@
+.container {
+    @apply w-full h-screen p-3 md:p-10 lg:p-3 flex flex-row justify-center;
+}
+
+.wrapper {
+    @apply flex flex-col w-full lg:w-[90vw] xl:w-[80vw] items-center p-2 mt-[12vh];
+}
+
+.title {
+    @apply uppercase text-3xl sm:text-4xl md:text-5xl font-medium tracking-widest text-center py-10;
+}
