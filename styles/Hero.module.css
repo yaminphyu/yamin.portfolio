@@ -1,5 +1,5 @@
 .container {
-    @apply w-full h-screen p-3 md:p-10 lg:p-3 box-border flex flex-row justify-center items-center absolute mt-[1vh] sm:mt-0;
+    @apply w-full h-screen p-3 md:p-10 lg:p-3 box-border flex flex-row justify-center items-center;
 }
 
 .wrapper {

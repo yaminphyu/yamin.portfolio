@@ -1,0 +1,31 @@
+.container {
+    @apply w-full h-screen p-3 md:p-10 lg:p-3 flex flex-row justify-center;
+}
+
+.wrapper {
+    @apply flex flex-col w-full lg:w-[90vw] xl:w-[80vw] items-center p-2 mt-[12vh];
+}
+
+.title {
+    @apply uppercase text-3xl sm:text-4xl md:text-5xl font-medium tracking-widest text-center py-10;
+}
+
+.skill-container {
+    @apply w-[80vw] h-[50vh] flex flex-col justify-center items-center gap-10 mt-5 md:mt-0 transition-opacity duration-[1500ms] ease-in-out;
+}
+
+.skill-container h2 {
+    @apply text-lg sm:text-2xl font-medium tracking-wider text-center;
+}
+
+.skills {
+    @apply w-full lg:w-[60vw] 2xl:w-[40vw] flex flex-row flex-wrap justify-center gap-y-6 gap-x-5 p-7;
+}
+
+.skill-item {
+    @apply w-[60px] md:w-[70px] lg:w-[80px] 2xl:w-[85px] h-[60px] md:h-[70px] lg:h-[80px] 2xl:h-[85px] rounded-full bg-white hover:bg-gray-200 flex justify-center items-center transition-all duration-[1000ms] ease-in-out;
+}
+
+.item {
+    @apply w-[30px] md:w-[35px] lg:w-[45px] h-[30px] md:h-[35px] 2xl:w-[50px] lg:h-[45px];
+}
