@@ -28,7 +28,7 @@ export default function Hero() {
                   className={styles.button}
                   onClick={() => alert("coming soon")}
                 >
-                  View my work
+                  Download CV
                 </button>
               </div>
             </div>
