@@ -6,26 +6,21 @@ export const menu = [
     },
     {
         id: 2,
-        title: 'Services',
-        url: '/#services'
-    },
-    {
-        id: 3,
         title: 'Skills',
         url: '/#skills'
     },
     {
-        id: 4,
+        id: 3,
         title: 'Resume',
         url: '/#resume'
     },
     {
-        id: 5,
+        id: 4,
         title: 'Portfolio',
         url: '/#portfolio'
     },
     {
-        id: 6,
+        id: 5,
         title: 'Contact',
         url: '/#contact'
     },

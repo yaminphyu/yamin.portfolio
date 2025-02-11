@@ -6,6 +6,7 @@ import styles from '@/styles/Header.module.css';
 import { BsList } from "react-icons/bs";
 import { MobileToggleContext } from '@/context/MobileToggleContext';
 import useDimension from '@/hooks/useDimension';
+import { handleSmoothScroll } from '@/common';
 
 export default function Header() {
     const { toggle, setToggle } = useContext(MobileToggleContext);
@@ -13,45 +14,36 @@ export default function Header() {
     const [isVisible, setIsVisible] = useState(false);
 
     const handleMobileToggle = () => {
-        if (toggle) {
-            closeToggle(); // When closing the toggle
-        } else {
-            openToggle(); // When opening the toggle
-        }
+        toggle ? closeToggle() : openToggle();
     };
 
     const openToggle = () => {
-        const scrollPosition = window.pageYOffset;
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
 
-          // Disable body scroll
-          document.body.style.position = 'fixed';
-          document.body.style.top = `-${scrollPosition}px`;
-          document.body.style.width = '100%';
-          document.body.style.overflow = 'hidden';
-
-          // Start animation and set toggle after starting
-          setIsVisible(true); // Set animation before toggle
-          setToggle(true);
+        // Start animation and set toggle after starting
+        setIsVisible(true); // Set animation before toggle
+        setToggle(true);
     };
 
     const closeToggle = () => {
-      const scrollPosition = parseInt(document.body.style.top, 10) * -1;
+        const scrollPosition = window.scrollY;
 
-      // Trigger animation
-      setIsVisible(false); // Set animation state
+        // Trigger animation
+        setIsVisible(false); // Set animation state
 
-      // Wait for animation to complete before restoring scroll
-      setTimeout(() => {
-        // Restore body scroll
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        document.body.style.overflow = '';
+        // Wait for animation to complete before restoring scroll
+        setTimeout(() => {
+            // Restore body scroll
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
 
-        window.scrollTo(0, scrollPosition); // Scroll back to the original position
+            window.scrollTo(0, scrollPosition); // Scroll back to the original position
 
-        setToggle(false); // Complete toggle after animation
-      }, 500);
+            setToggle(false); // Complete toggle after animation
+        }, 500);
     };
 
     useEffect(() => {
@@ -72,7 +64,11 @@ export default function Header() {
                         {
                             menu.map((item) => (
                                 <li key={item.id}>
-                                    <a href={item.url}>{item.title}</a>
+                                    <Link
+                                        href={item.url}
+                                    >
+                                        {item.title}
+                                    </Link>
                                 </li>
                             ))
                         }
@@ -116,7 +112,12 @@ export default function Header() {
                                         key={item.id}
                                         className='p-2'
                                     >
-                                        <a href={item.url}>{item.title}</a>
+                                        <Link
+                                            href={item.url}
+                                            onClick={(e) => handleSmoothScroll(e, item.url, closeToggle)}
+                                        >
+                                            {item.title}
+                                        </Link>
                                     </li>
                                 ))
                             }
