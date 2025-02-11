@@ -1,5 +1,5 @@
 .container {
-    @apply w-full h-[12vh] p-3 md:p-10 lg:p-3 box-border flex flex-col justify-center items-center fixed z-50 bg-background;
+    @apply w-full h-[12vh] p-3 md:p-10 lg:p-3 box-border flex flex-col justify-center items-center fixed mt-2 z-50 bg-background;
 }
 
 .wrapper {
@@ -20,6 +20,10 @@
 
 .menu-list ul li {
     @apply inline-block mx-2;
+}
+
+.active {
+    @apply border-2 w-6 rounded-2xl;
 }
 
 .socials {
