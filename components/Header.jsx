@@ -57,7 +57,12 @@ export default function Header() {
         >
             <div className={styles.wrapper}>
                 <div>
-                    <h1 className={styles.title}>Yamin</h1>
+                    <Link
+                        href="/"
+                        onClick={(e) => handleSmoothScroll(e, '/#hero')}
+                    >
+                        <h1 className={styles.title}>Yamin</h1>
+                    </Link>
                 </div>
                 <div className={styles['menu-list']}>
                     <ul>

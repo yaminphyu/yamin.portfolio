@@ -11,6 +11,7 @@ export const handleSmoothScroll = (e, id, closeSidebar) => {
     setTimeout(() => {
         if (hash_code === 'hero') {
             window.scrollTo({ top: 0, behavior: "smooth" })
+            window.history.pushState(null, '', '/');
         } else {
             const element = document.getElementById(hash_code);
             if (element) {
@@ -18,5 +19,5 @@ export const handleSmoothScroll = (e, id, closeSidebar) => {
                 window.history.pushState(null, '', `#${hash_code}`);
             }
         }
-    }, 550); // Adjust the delay to match the sidebar closing animation time
+    }, 700); // Adjust the delay to match the sidebar closing animation time
 };
