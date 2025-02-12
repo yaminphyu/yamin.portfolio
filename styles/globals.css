@@ -9,6 +9,8 @@
   --foreground: #ffffff;
   --primary: #2a1756;
   --secondary: #6855d5;
+  --dark: #8468c5;
+  --light: #b5a0e6;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -24,10 +26,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
+h1,
+.active {
   display: inline-block;
   background: linear-gradient(90deg, rgb(214, 52, 166) 0%, rgb(43, 203, 214) 38%, rgb(146, 12, 199) 95%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.active-line {
+  background: linear-gradient(90deg, rgb(214, 52, 166) 0%, rgb(43, 203, 214) 38%, rgb(146, 12, 199) 95%);
+}
+
+.active {
+  font-size: 18px;
 }

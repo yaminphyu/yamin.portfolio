@@ -7,11 +7,22 @@ import { BsList } from "react-icons/bs";
 import { MobileToggleContext } from '@/context/MobileToggleContext';
 import useDimension from '@/hooks/useDimension';
 import { handleSmoothScroll } from '@/common';
+import { ActiveHashContentContext } from '@/context/ActiveHashContent';
 
 export default function Header() {
     const { toggle, setToggle } = useContext(MobileToggleContext);
+    const { activeHash, setActiveHash } = useContext(ActiveHashContentContext);
     const { width } = useDimension();
+
     const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const handleRouteChange = () => {
+            setActiveHash(`/${window.location.hash}` || '');
+        };
+
+        handleRouteChange();
+    }, []);
 
     const handleMobileToggle = () => {
         toggle ? closeToggle() : openToggle();
@@ -59,7 +70,7 @@ export default function Header() {
                 <div>
                     <Link
                         href="/"
-                        onClick={(e) => handleSmoothScroll(e, '/#hero')}
+                        onClick={(e) => handleSmoothScroll(e, '/#hero', setActiveHash)}
                     >
                         <h1 className={styles.title}>Yamin</h1>
                     </Link>
@@ -68,13 +79,23 @@ export default function Header() {
                     <ul>
                         {
                             menu.map((item) => (
-                                <li key={item.id}>
+                                <div
+                                    key={item.id}
+                                    className='flex flex-col'
+                                >
                                     <Link
                                         href={item.url}
+                                        onClick={(e) => handleSmoothScroll(e, item.url, closeToggle, setActiveHash)}
+                                        className={`${ activeHash === item.url ? 'active' : '' }`}
                                     >
-                                        {item.title}
+                                        <li>{item.title}</li>
+                                        {
+                                            activeHash === item.url && (
+                                                <div className='w-[25px] h-[3px] rounded-full bg-gray-100 mx-2 active-line'></div>
+                                            )
+                                        }
                                     </Link>
-                                </li>
+                                </div>
                             ))
                         }
                     </ul>
@@ -115,11 +136,11 @@ export default function Header() {
                                 menu.map((item) => (
                                     <li
                                         key={item.id}
-                                        className='p-2'
+                                        className={`p-2 w-full bg-dark text-center hover:bg-light rounded-lg ${ activeHash === item.url ? 'bg-light' : '' }`}
                                     >
                                         <Link
                                             href={item.url}
-                                            onClick={(e) => handleSmoothScroll(e, item.url, closeToggle)}
+                                            onClick={(e) => handleSmoothScroll(e, item.url, closeToggle, setActiveHash)}
                                         >
                                             {item.title}
                                         </Link>
