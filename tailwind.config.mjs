@@ -13,6 +13,8 @@ export default {
         foreground: "var(--foreground)",
         primary: "var(--primary)",
         secondary: "var(--secondary)",
+        dark: "var(--dark)",
+        light: "var(--light)",
       },
       keyframes: {
         'fade-in-down': {

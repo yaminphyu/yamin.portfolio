@@ -18,7 +18,7 @@
     @apply flex gap-5;
 }
 
-.menu-list ul li {
+.menu-list ul div li {
     @apply inline-block mx-2;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .mobile-toggle {
-    @apply flex flex-col justify-center w-[94vw] md:w-[91vw] xl:w-[80vw] h-[32vh] md:h-[25vh] bg-primary border-2 border-primary absolute mt-[43vh] md:mt-[34vh] rounded-xl;
+    @apply flex flex-col justify-center w-[94vw] md:w-[91vw] xl:w-[80vw] h-[32vh] md:h-[28vh] bg-primary border-2 border-primary absolute mt-[43vh] md:mt-[38vh] rounded-xl;
 }
 
 .mobile-toggle-menu {
