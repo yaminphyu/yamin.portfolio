@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { menu } from '@/config';
@@ -6,10 +6,11 @@ import styles from '@/styles/Header.module.css';
 import { BsList } from "react-icons/bs";
 import { MobileToggleContext } from '@/context/MobileToggleContext';
 import useDimension from '@/hooks/useDimension';
-import { handleSmoothScroll } from '@/common';
+import { handleSmoothScroll, useOutsideAlerter } from '@/common';
 import { ActiveHashContentContext } from '@/context/ActiveHashContent';
 
 export default function Header() {
+    const toggleRef = useRef(null);
     const { toggle, setToggle } = useContext(MobileToggleContext);
     const { activeHash, setActiveHash } = useContext(ActiveHashContentContext);
     const { width } = useDimension();
@@ -56,6 +57,8 @@ export default function Header() {
             setToggle(false); // Complete toggle after animation
         }, 500);
     };
+
+    useOutsideAlerter(toggleRef, closeToggle);
 
     useEffect(() => {
         width > 1020 && setToggle(false);
@@ -130,21 +133,23 @@ export default function Header() {
                             ${styles['mobile-toggle']}
                             ${isVisible ? 'animate-fade-in-down' : 'animate-fade-out-up'}
                         `}
+                        ref={toggleRef}
                     >
                         <ul className={styles['mobile-toggle-menu']}>
                             {
                                 menu.map((item) => (
-                                    <li
+                                    <div
                                         key={item.id}
-                                        className={`p-2 w-full bg-dark text-center hover:bg-light rounded-lg ${ activeHash === item.url ? 'bg-light' : '' }`}
+                                        className='flex flex-col w-full'
                                     >
                                         <Link
                                             href={item.url}
                                             onClick={(e) => handleSmoothScroll(e, item.url, closeToggle, setActiveHash)}
+                                            className={`p-2 w-full bg-dark text-center hover:bg-light rounded-lg ${ activeHash === item.url ? 'bg-light' : '' }`}
                                         >
-                                            {item.title}
+                                            <li>{item.title}</li>
                                         </Link>
-                                    </li>
+                                    </div>
                                 ))
                             }
                         </ul>
