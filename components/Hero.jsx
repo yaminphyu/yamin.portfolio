@@ -24,12 +24,13 @@ export default function Hero() {
             <div className={styles.description}>
               <p className='animate-slide-in-up'>I am Yamin who works as web developer with a passion for creating beautiful and responsive websites.</p>
               <div className={styles['button-wrapper']}>
-                <button
-                  className={styles.button}
-                  onClick={() => alert("coming soon")}
-                >
-                  Download CV
-                </button>
+                <a href="/yaminCV.pdf" download="yaminCV.pdf">
+                  <button
+                    className={styles.button}
+                  >
+                    Download CV
+                  </button>
+                </a>
               </div>
             </div>
           </div>
