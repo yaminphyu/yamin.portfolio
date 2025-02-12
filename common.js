@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+
+/* eslint-disable react-hooks/exhaustive-deps */
 export const handleSmoothScroll = (e, id, closeSidebar, setActiveHash) => {
     e.preventDefault();
 
@@ -21,4 +24,20 @@ export const handleSmoothScroll = (e, id, closeSidebar, setActiveHash) => {
             }
         }
     }, 700); // Adjust the delay to match the sidebar closing animation time
+};
+
+export const useOutsideAlerter = (ref, closeToggle) => {
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (ref.current && !ref.current.contains(event.target)) {
+                closeToggle();
+            }
+        }
+        // Bind the event listener
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            // Unbind the event listener on clean up
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [ref]);
 };
