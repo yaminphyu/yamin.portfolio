@@ -11,8 +11,8 @@ export const menu = [
     },
     {
         id: 3,
-        title: 'Resume',
-        url: '/#resume'
+        title: 'Work Experience',
+        url: '/#work-experience'
     },
     {
         id: 4,
@@ -110,4 +110,31 @@ export const aboutMe = [
         title: 'fourth paragraph',
         description: 'Beyond technical expertise, I am committed to writing clean, maintainable code and following industry standards to build scalable and efficient applications. I am excited about opportunities to work on innovative projects that challenge me to grow as a developer and make a meaningful impact in the field of software development.'
     }
+];
+
+export const workExperiences = [
+    {
+        id: 1,
+        title: 'Frontend Developer',
+        company: 'Infinity Informations & App Dev Co.,Ltd',
+        location: 'BKK1, Phnom Penh, Cambodia.',
+        logo: '/work-exp/infinity.png',
+        description: 'Expertise in Responsive Design, API Integration, and Feature Development',
+    },
+    {
+        id: 2,
+        title: 'Web Developer',
+        company: 'Village Link | Awba Entity',
+        location: '8-mile Business Center, Yangon, Myanmar.',
+        logo: '/work-exp/village-link.png',
+        description: 'Develop a mobile application(Htwet Toe) designed to enhance the convenience of farmers, accompanied by the establishment of an administrative panel to oversee maintenance, address software defects, and integrate progressive features.',
+    },
+    {
+        id: 3,
+        title: 'Web Developer',
+        company: 'AGGA.IO  | Software house',
+        location: 'Tawin Center, Yangon, Myanmar.',
+        logo: '/work-exp/aggaio.jpg',
+        description: 'Effectively oversee and engage with clients, both from private enterprises and government entities, to address their business requirements by delivering tailored IT solutions. Development of applications, websites, and CMS catering to the diverse needs of our clients.',
+    },
 ];
