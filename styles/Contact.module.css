@@ -4,7 +4,7 @@
 }
 
 .button-wrapper {
-    @apply w-[153px] sm:w-28 inline-block rounded-xl p-[2px] animate-slide-in-up;
+    @apply w-[98px] sm:w-28 inline-block rounded-xl p-[2px] animate-slide-in-up;
 
     background: linear-gradient(90deg, rgb(43, 203, 214) 0%, rgba(214, 52, 166) 38%, rgb(146, 12, 199) 95%);
 }

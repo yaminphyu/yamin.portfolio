@@ -25,7 +25,7 @@ export default function Contact() {
                 <div className='w-full h-full lg:h-[60vh] flex flex-col lg:flex-row justify-between lg:justify-start items-center gap-16 lg:gap-0'>
                     <div
                         className={`
-                            w-full h-full flex flex-col justify-start items-start gap-10 lg:gap-16
+                            w-full h-full flex flex-col justify-start items-start gap-10 lg:gap-16 p-3 lg:p-0
                             transition-all duration-[1000ms] ease-in-out
                             ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}
                         `}
@@ -38,16 +38,16 @@ export default function Contact() {
                             transition-all duration-[1000ms] ease-in-out
                             ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}
                         `}>
-                            <h1 className='uppercase text-3xl'>Do you have a projecet to discuss?</h1>
+                            <h1 className='uppercase text-2xl lg:text-3xl'>Do you have a projecet to discuss?</h1>
                             <div className='flex gap-3'>
-                                <h2 className='uppercase text-3xl text-gray-200'>Get in touch</h2>
+                                <h2 className='uppercase text-xl lg:text-2xl text-gray-200'>Get in touch</h2>
                                 <MdOutlineMessage className='text-2xl md:text-3xl text-gray-300' />
                             </div>
                         </div>
-                        <div className='flex justify-between w-full'>
+                        <div className='flex flex-col lg:flex-row justify-between w-full gap-5 lg:gap-0'>
                             <div
                                 className={`
-                                    flex flex-col gap-4 w-full
+                                    flex flex-col gap-1 md:gap-4 w-full
                                     transition-all duration-[1000ms] ease-in-out
                                     ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}
                                 `}
@@ -55,12 +55,12 @@ export default function Contact() {
                                     transitionDelay: isVisible ? `${2 * 200}ms` : "0ms"
                                 }}
                             >
-                                <h2 className='uppercase text-2xl text-gray-200'>Contact</h2>
+                                <h2 className='uppercase text-xl lg:text-2xl text-gray-200'>Contact</h2>
                                 <a href="mailto:ymp2171995@gmail.com" className='text-cyan-500'>ymp2171995@gmail.com</a>
                             </div>
                             <div
                                 className={`
-                                    flex flex-col gap-4 w-full
+                                    flex flex-col gap-1 md:gap-4 w-full
                                     transition-all duration-[1000ms] ease-in-out
                                     ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}
                                 `}
@@ -68,7 +68,7 @@ export default function Contact() {
                                     transitionDelay: isVisible ? `${3 * 200}ms` : "0ms"
                                 }}
                             >
-                                <h2 className='uppercase text-2xl text-gray-200'>Social Media</h2>
+                                <h2 className='uppercase text-xl lg:text-2xl text-gray-200'>Social Media</h2>
                                 <div className='flex gap-4'>
                                     <Link
                                         href={process.env.GITHUB}
@@ -96,7 +96,7 @@ export default function Contact() {
                             transitionDelay: isVisible ? `${3 * 200}ms` : "0ms"
                         }}
                     >
-                        <h2 className='uppercase text-3xl'>Contact Form</h2>
+                        <h2 className='uppercase text-2xl lg:text-3xl'>Contact Form</h2>
                         <div className='flex flex-col gap-4 p-3 w-full h-full'>
                             <div
                                 className={`
