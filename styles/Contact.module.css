@@ -1,0 +1,14 @@
+
+.wrapper {
+    @apply flex flex-col w-full lg:w-[90vw] xl:w-[80vw] p-2 box-border gap-5 md:gap-12 lg:gap-0 items-center mt-[8vh] sm:mt-[12vh];
+}
+
+.button-wrapper {
+    @apply w-[153px] sm:w-28 inline-block rounded-xl p-[2px] animate-slide-in-up;
+
+    background: linear-gradient(90deg, rgb(43, 203, 214) 0%, rgba(214, 52, 166) 38%, rgb(146, 12, 199) 95%);
+}
+
+.button {
+  @apply bg-background text-white py-3 px-5 sm:px-6 text-sm sm:text-base font-medium border-none cursor-pointer uppercase block rounded-xl;
+}
