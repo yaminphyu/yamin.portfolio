@@ -1,13 +1,10 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import indexStyles from '@/styles/Index.module.css';
 import styles from '@/styles/AboutMe.module.css';
 import { aboutMe } from '@/config';
-import useAnimation from '@/hooks/useAnimation';
+import { FadeIn } from './FadeIn';
 
 export default function AboutMe() {
-    const aboutMeRef = useRef(null);
-    const isVisible = useAnimation({ targetRef: aboutMeRef });
-
     return (
         <section
             id='about'
@@ -20,20 +17,17 @@ export default function AboutMe() {
                     About me
                 </h1>
                 <div
-                    ref={aboutMeRef}
                     className={styles.container}
                 >
                     {
                         aboutMe.map((item, index) => (
-                            <p
+                            <FadeIn
                                 key={index}
-                                className={`${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}
-                                style={{
-                                    transitionDelay: isVisible ? `${index * 200}ms` : "0ms"
-                                }}
+                                delay={index * 200}
+                                styleName={`w-full`}
                             >
-                                {item.description}
-                            </p>
+                                <p>{item.description}</p>
+                            </FadeIn>
                         ))
                     }
                 </div>

@@ -1,45 +1,33 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import indexStyles from '@/styles/Index.module.css';
 import styles from '@/styles/WorkExperience.module.css';
 import Image from 'next/image';
 import { workExperiences } from '@/config';
-import useAnimation from '@/hooks/useAnimation';
+import { FadeIn } from './FadeIn';
 
 export default function WorkExperience() {
-    const workExpRef = useRef(null);
-    const isVisible = useAnimation({ targetRef: workExpRef });
-
     return (
         <section
             id='work-experience'
-            className={`
-                !h-full md:!h-screen
-                ${indexStyles.container}
-            `}
+            className={`!h-full md:!h-screen ${indexStyles.container}`}
         >
             <div className={styles.wrapper}>
                 <h1 className={indexStyles.title}>
                     Work Experience
                 </h1>
 
-                <div
-                    ref={workExpRef}
-                    className={styles['main-wrapper']}
-                >
+                <div className={styles['main-wrapper']}>
                     <div className={styles.line}></div>
 
                     {
                         workExperiences.map((item, index) => (
-                            <div
+                            <FadeIn
                                 key={index}
-                                className={`
-                                    relative w-full flex justify-center transition-all duration-[1000ms] ease-in-out
-                                    ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}
+                                delay={index * 100}
+                                styleName={`
+                                    relative w-full flex justify-center
                                     ${index % 2 === 0 ? 'lg:justify-start' : 'lg:justify-end'}
                                 `}
-                                style={{
-                                    transitionDelay: isVisible ? `${index * 100}ms` : "0ms"
-                                }}
                             >
                                 <div className={styles.item}>
                                     <div
@@ -64,7 +52,7 @@ export default function WorkExperience() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </FadeIn>
                         ))
                     }
                 </div>

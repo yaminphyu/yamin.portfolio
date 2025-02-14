@@ -3,5 +3,5 @@
 }
 
 .container p {
-    @apply text-base md:text-lg transition-all duration-[1000ms] ease-in-out tracking-wide lg:tracking-wider leading-5 md:leading-7 lg:leading-9;
+    @apply text-base md:text-lg tracking-wide lg:tracking-wider leading-5 md:leading-7 lg:leading-9;
 }
