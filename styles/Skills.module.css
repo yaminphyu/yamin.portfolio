@@ -11,7 +11,7 @@
 }
 
 .skill-item {
-    @apply w-[60px] md:w-[70px] lg:w-[80px] 2xl:w-[85px] h-[60px] md:h-[70px] lg:h-[80px] 2xl:h-[85px] rounded-full bg-white hover:bg-gray-200 flex justify-center items-center transition-all duration-[1000ms] ease-in-out;
+    @apply w-[60px] md:w-[70px] lg:w-[80px] 2xl:w-[85px] h-[60px] md:h-[70px] lg:h-[80px] 2xl:h-[85px] rounded-full bg-white hover:bg-gray-200 flex justify-center items-center;
 }
 
 .item {

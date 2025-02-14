@@ -5,6 +5,7 @@ import { skills } from "@/config";
 import indexStyles from '@/styles/Index.module.css';
 import styles from "@/styles/Skills.module.css";
 import useAnimation from "@/hooks/useAnimation";
+import { FadeIn } from "./FadeIn";
 
 export default function Skills() {
     const skillRef = useRef(null);
@@ -31,15 +32,10 @@ export default function Skills() {
                     </h2>
                     <div className={styles.skills}>
                         {skills.map((skill, index) => (
-                            <div
+                            <FadeIn
                                 key={index}
-                                className={`
-                                    ${styles["skill-item"]}
-                                    ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}
-                                `}
-                                style={{
-                                    transitionDelay: isVisible ? `${index * 200}ms` : "0ms"
-                                }}
+                                delay={index * 200}
+                                styleName={styles["skill-item"]}
                             >
                                 <Image
                                     src={skill.icon}
@@ -48,7 +44,7 @@ export default function Skills() {
                                     height={35}
                                     className={styles.item}
                                 />
-                            </div>
+                            </FadeIn>
                         ))}
                     </div>
                 </div>

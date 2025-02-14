@@ -7,7 +7,10 @@ import { MdOutlineMessage } from "react-icons/md";
 import { FadeIn } from './FadeIn';
 
 const ContactInfo = () => (
-    <FadeIn delay={400}>
+    <FadeIn
+        delay={400}
+        styleName={'w-full'}
+    >
         <div className="flex flex-col gap-5">
             <h1 className="uppercase text-2xl lg:text-3xl">Do you want me to hire?</h1>
             <div className="flex gap-3">
@@ -19,7 +22,10 @@ const ContactInfo = () => (
 );
 
 const SocialLinks = () => (
-    <FadeIn delay={600}>
+    <FadeIn
+        delay={600}
+        styleName={'w-full'}
+    >
         <div className="flex flex-col gap-1 md:gap-4 w-full">
             <h2 className="uppercase text-xl lg:text-2xl text-gray-200">Social Media</h2>
             <div className="flex gap-4">
@@ -41,12 +47,16 @@ const SocialLinks = () => (
 );
 
 const ContactForm = () => (
-    <FadeIn delay={800}>
+    <FadeIn
+        delay={800}
+        styleName={'w-full'}
+    >
         <div className="flex flex-col gap-4 p-3 w-full h-full">
             {['Name', 'Email', 'Message'].map((label, index) => (
                 <FadeIn
                     key={label}
                     delay={400 + index * 200}
+                    styleName={'w-full'}
                 >
                     <div className="flex flex-col gap-3">
                         <label
@@ -87,7 +97,10 @@ export default function Contact() {
                     <div className="w-full h-full flex flex-col justify-start items-start gap-10 lg:gap-16 p-3 lg:p-0">
                         <ContactInfo />
                         <div className="flex flex-col lg:flex-row justify-between w-full gap-5 lg:gap-0">
-                            <FadeIn delay={400}>
+                            <FadeIn
+                                delay={400}
+                                styleName={'w-full'}
+                            >
                                 <div className="flex flex-col gap-1 md:gap-4 w-full">
                                     <h2 className="uppercase text-xl lg:text-2xl text-gray-200">Contact</h2>
                                     <a href="mailto:ymp2171995@gmail.com" className="text-cyan-500">ymp2171995@gmail.com</a>
