@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import indexStyles from '@/styles/Index.module.css';
 import styles from '@/styles/Contact.module.css';
 import Link from 'next/link';
@@ -46,47 +46,78 @@ const SocialLinks = () => (
     </FadeIn>
 );
 
-const ContactForm = () => (
-    <FadeIn
-        delay={800}
-        styleName={'w-full'}
-    >
-        <div className="flex flex-col gap-4 p-3 w-full h-full">
-            {['Name', 'Email', 'Message'].map((label, index) => (
-                <FadeIn
-                    key={label}
-                    delay={400 + index * 200}
-                    styleName={'w-full'}
-                >
-                    <div className="flex flex-col gap-3">
-                        <label
-                            htmlFor={label.toLowerCase()}
-                            className="text-gray-200"
-                        >{label}</label>
-                        {label === "Message" ? (
-                            <textarea
-                                id={label.toLowerCase()}
-                                className="border-2 border-gray-400 bg-background px-4 py-2 box-border text-gray-200 rounded-lg"
-                                rows="7"
-                            ></textarea>
-                        ) : (
-                            <input
-                                type={label === "Email" ? "email" : "text"}
-                                id={label.toLowerCase()}
-                                className="border-2 border-gray-400 h-12 px-4 py-2 box-border bg-background text-gray-200 rounded-lg"
-                            />
-                        )}
-                    </div>
-                </FadeIn>
-            ))}
-            <div className={styles['button-wrapper']}>
-                <button className={styles.button}>Submit</button>
+const ContactForm = ({ userInformation, setUserInformation, sendEmail }) => {
+    const handleChange = (e) => setUserInformation({ ...userInformation, [e.target.id]: e.target.value });
+
+    return (
+        <FadeIn
+            delay={800}
+            styleName={'w-full'}
+        >
+            <div className="flex flex-col gap-4 p-3 w-full h-full">
+                {['Name', 'Email', 'Message'].map((label, index) => (
+                    <FadeIn
+                        key={label}
+                        delay={400 + index * 200}
+                        styleName={'w-full'}
+                    >
+                        <div className="flex flex-col gap-3">
+                            <label
+                                htmlFor={label.toLowerCase()}
+                                className="text-gray-200"
+                            >{label}</label>
+                            {label === "Message" ? (
+                                <textarea
+                                    id={label.toLowerCase()}
+                                    className="border-2 border-gray-400 bg-background px-4 py-2 box-border text-gray-200 rounded-lg"
+                                    rows="7"
+                                    onChange={handleChange}
+                                ></textarea>
+                            ) : (
+                                <input
+                                    type={label === "Email" ? "email" : "text"}
+                                    id={label.toLowerCase()}
+                                    className="border-2 border-gray-400 h-12 px-4 py-2 box-border bg-background text-gray-200 rounded-lg"
+                                    onChange={handleChange}
+                                />
+                            )}
+                        </div>
+                    </FadeIn>
+                ))}
+                <div className={styles['button-wrapper']}>
+                    <button
+                        className={styles.button}
+                        onClick={sendEmail}
+                    >Submit</button>
+                </div>
             </div>
-        </div>
-    </FadeIn>
-);
+        </FadeIn>
+    );
+};
 
 export default function Contact() {
+    const [userInformation, setUserInformation] = useState({
+        name: '',
+        email: '',
+        message: '',
+    });
+
+    const sendEmail = async () => {
+        const response = await fetch("/api/sendEmail", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                to: "ymp2171995@gmail.com",
+                subject: userInformation?.email,
+                message: userInformation?.message,
+            }),
+        })
+
+        const data = await response.json();
+    };
+
     return (
         <section
             id="contact"
@@ -111,7 +142,11 @@ export default function Contact() {
                     </div>
                     <div className="w-full h-full flex flex-col justify-start items-start gap-3">
                         <h2 className="uppercase text-2xl lg:text-3xl">Contact Form</h2>
-                        <ContactForm />
+                        <ContactForm
+                            userInformation={userInformation}
+                            setUserInformation={setUserInformation}
+                            sendEmail={sendEmail}
+                        />
                     </div>
                 </div>
             </div>
