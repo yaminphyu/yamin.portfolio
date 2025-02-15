@@ -4,11 +4,11 @@
 }
 
 .button-wrapper {
-    @apply w-[98px] sm:w-28 inline-block rounded-xl p-[2px] animate-slide-in-up;
+    @apply inline-block rounded-xl p-[2px] animate-slide-in-up;
 
     background: linear-gradient(90deg, rgb(43, 203, 214) 0%, rgba(214, 52, 166) 38%, rgb(146, 12, 199) 95%);
 }
 
 .button {
-  @apply bg-background text-white py-3 px-5 sm:px-6 text-sm sm:text-base font-medium border-none cursor-pointer uppercase block rounded-xl;
+  @apply bg-background flex justify-center items-center text-white py-3 px-5 sm:px-6 text-sm sm:text-base font-medium border-none cursor-pointer uppercase block rounded-xl;
 }

@@ -46,8 +46,11 @@ const SocialLinks = () => (
     </FadeIn>
 );
 
-const ContactForm = ({ userInformation, setUserInformation, sendEmail }) => {
-    const handleChange = (e) => setUserInformation({ ...userInformation, [e.target.id]: e.target.value });
+const ContactForm = ({ userInformation, setUserInformation, handleSendingEmail, isSubmitted, errorMsg, setErrorMsg }) => {
+    const handleChange = (e) => {
+        setErrorMsg({ ...errorMsg, [e.target.id]: '' });
+        setUserInformation({ ...userInformation, [e.target.id]: e.target.value });
+    }
 
     return (
         <FadeIn
@@ -72,6 +75,7 @@ const ContactForm = ({ userInformation, setUserInformation, sendEmail }) => {
                                     className="border-2 border-gray-400 bg-background px-4 py-2 box-border text-gray-200 rounded-lg"
                                     rows="7"
                                     onChange={handleChange}
+                                    value={userInformation?.message}
                                 ></textarea>
                             ) : (
                                 <input
@@ -79,16 +83,39 @@ const ContactForm = ({ userInformation, setUserInformation, sendEmail }) => {
                                     id={label.toLowerCase()}
                                     className="border-2 border-gray-400 h-12 px-4 py-2 box-border bg-background text-gray-200 rounded-lg"
                                     onChange={handleChange}
+                                    value={userInformation?.[label.toLowerCase()]}
                                 />
                             )}
+                            {
+                                errorMsg[label.toLowerCase()] && (
+                                    <label className='text-red-500 -mt-2'>{errorMsg[label.toLowerCase()]}</label>
+                            )}
+
+
                         </div>
                     </FadeIn>
                 ))}
-                <div className={styles['button-wrapper']}>
+                <div className={`
+                    w-[98px] ${isSubmitted ? 'sm:w-[9.2rem]' : 'sm:w-28'}
+                    ${styles['button-wrapper']}`}
+                >
                     <button
                         className={styles.button}
-                        onClick={sendEmail}
-                    >Submit</button>
+                        onClick={handleSendingEmail}
+                        disabled={isSubmitted}
+                    >
+                        {
+                        isSubmitted && (
+                            <div className="flex items-center justify-center mr-[10px]">
+                                <div className="relative">
+                                    <div className="h-6 w-6 rounded-full border-t-2 border-b-2 border-gray-200"></div>
+                                    <div className="absolute top-0 left-0 h-6 w-6 rounded-full border-t-2 border-b-2 border-blue-500 animate-spin">
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    }
+                    Submit</button>
                 </div>
             </div>
         </FadeIn>
@@ -96,26 +123,58 @@ const ContactForm = ({ userInformation, setUserInformation, sendEmail }) => {
 };
 
 export default function Contact() {
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const [userInformation, setUserInformation] = useState({
         name: '',
         email: '',
         message: '',
     });
+    const [errorMsg, setErrorMsg] = useState({
+        name: '',
+        email: '',
+        message: '',
+    });
 
-    const sendEmail = async () => {
-        const response = await fetch("/api/sendEmail", {
+    const handleSendingEmail = async () => {
+        const { name, email, message } = userInformation;
+
+        const newErrors = {};
+
+        if (!name) {
+            newErrors.name = 'Name is required';
+        }
+
+        if (!email) {
+            newErrors.email = 'Email is required';
+        }
+
+        if (!message) {
+            newErrors.message = 'Message is required';
+        }
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrorMsg(newErrors); // Update state once with all errors
+            return;
+        }
+
+        setIsSubmitted(true);
+        const response = await fetch("/api/handleSendingEmail", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                to: "ymp2171995@gmail.com",
+                to: process.env.RECEIVER_EMAIL,
                 subject: userInformation?.email,
                 message: userInformation?.message,
             }),
         })
 
         const data = await response.json();
+        if (data.success) {
+            setIsSubmitted(false)
+            setUserInformation({ name: '', email: '', message: '' })
+        }
     };
 
     return (
@@ -141,11 +200,19 @@ export default function Contact() {
                         </div>
                     </div>
                     <div className="w-full h-full flex flex-col justify-start items-start gap-3">
-                        <h2 className="uppercase text-2xl lg:text-3xl">Contact Form</h2>
+                        <FadeIn
+                            delay={600}
+                            styleName={'w-full'}
+                        >
+                            <h2 className="uppercase text-2xl lg:text-3xl">Contact Form</h2>
+                        </FadeIn>
                         <ContactForm
                             userInformation={userInformation}
                             setUserInformation={setUserInformation}
-                            sendEmail={sendEmail}
+                            handleSendingEmail={handleSendingEmail}
+                            isSubmitted={isSubmitted}
+                            errorMsg={errorMsg}
+                            setErrorMsg={setErrorMsg}
                         />
                     </div>
                 </div>

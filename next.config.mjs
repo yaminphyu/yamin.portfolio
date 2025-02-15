@@ -6,6 +6,7 @@ const nextConfig = {
     LINKED_IN: process.env.LINKED_IN,
     EMAIL_USER: process.env.EMAIL_USER,
     EMAIL_PASS: process.env.EMAIL_PASS,
+    RECEIVER_EMAIL: process.env.RECEIVER_EMAIL,
   }
 };
 

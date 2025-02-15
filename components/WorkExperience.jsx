@@ -17,7 +17,10 @@ export default function WorkExperience() {
                 </h1>
 
                 <div className={styles['main-wrapper']}>
-                    <div className={styles.line}></div>
+                    <FadeIn
+                        delay={300}
+                        styleName={styles.line}
+                    ></FadeIn>
 
                     {
                         workExperiences.map((item, index) => (
