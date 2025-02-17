@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import indexStyles from '@/styles/Index.module.css';
 import styles from '@/styles/WorkExperience.module.css';
 import Image from 'next/image';
 import { workExperiences } from '@/config';
 import { FadeIn } from './FadeIn';
+import useAnimation from '@/hooks/useAnimation';
+import { useScrollUrlActive } from '@/common';
 
 export default function WorkExperience() {
+    const workRef = useRef(null);
+    const { isRefVisible } = useAnimation({ mainRef: workRef, id: 'work-experience' });
+    useScrollUrlActive(workRef?.current?.id, isRefVisible);
+
     return (
         <section
+            ref={workRef}
             id='work-experience'
             className={`!h-full md:!h-screen ${indexStyles.container}`}
         >

@@ -1,27 +1,32 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { skills } from "@/config";
 import indexStyles from '@/styles/Index.module.css';
 import styles from "@/styles/Skills.module.css";
 import useAnimation from "@/hooks/useAnimation";
 import { FadeIn } from "./FadeIn";
+import { useScrollUrlActive } from "@/common";
 
 export default function Skills() {
     const skillRef = useRef(null);
-    const isVisible = useAnimation({ targetRef: skillRef });
+    const targetRef = useRef(null);
+
+    const { isVisible, isRefVisible } = useAnimation({ mainRef: skillRef, targetRef });
+    useScrollUrlActive(skillRef?.current?.id, isRefVisible);
 
     return (
         <section
+            ref={skillRef}
             id="skills"
-            className={indexStyles.container}
+            className={`${indexStyles.container} !h-full`}
         >
             <div className={indexStyles.wrapper}>
                 <h1 className={indexStyles.title}>
                     Skills
                 </h1>
                 <div
-                    ref={skillRef}
+                    ref={targetRef}
                     className={`
                         ${styles['container']}
                         ${ isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10" }

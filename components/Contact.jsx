@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import indexStyles from '@/styles/Index.module.css';
 import styles from '@/styles/Contact.module.css';
 import Link from 'next/link';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdOutlineMessage } from "react-icons/md";
 import { FadeIn } from './FadeIn';
+import useAnimation from '@/hooks/useAnimation';
+import { useScrollUrlActive } from '@/common';
 
 const ContactInfo = () => (
     <FadeIn
@@ -123,6 +125,10 @@ const ContactForm = ({ userInformation, setUserInformation, handleSendingEmail, 
 };
 
 export default function Contact() {
+    const contactRef = useRef(null);
+    const { isRefVisible } = useAnimation({ mainRef: contactRef, id: 'contact' });
+    useScrollUrlActive(contactRef?.current?.id, isRefVisible);
+
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [userInformation, setUserInformation] = useState({
         name: '',
@@ -179,6 +185,7 @@ export default function Contact() {
 
     return (
         <section
+            ref={contactRef}
             id="contact"
             className={`!h-full ${indexStyles.container}`}
         >

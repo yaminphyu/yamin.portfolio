@@ -6,7 +6,7 @@ import styles from '@/styles/Header.module.css';
 import { BsList } from "react-icons/bs";
 import { MobileToggleContext } from '@/context/MobileToggleContext';
 import useDimension from '@/hooks/useDimension';
-import { handleSmoothScroll, useOutsideAlerter } from '@/common';
+import { handleScroll, handleSmoothScroll, useOutsideAlerter } from '@/common';
 import { ActiveHashContentContext } from '@/context/ActiveHashContent';
 
 export default function Header() {
@@ -18,8 +18,9 @@ export default function Header() {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        const handleRouteChange = () => {
+        const handleRouteChange = (e) => {
             setActiveHash(`/${window.location.hash}` || '');
+            handleScroll(`/${window.location.hash}` || '', setActiveHash);
         };
 
         handleRouteChange();
@@ -84,17 +85,19 @@ export default function Header() {
                             menu.map((item) => (
                                 <div
                                     key={item.id}
-                                    className='flex flex-col'
+                                    className='flex flex-col group'
                                 >
                                     <Link
                                         href={item.url}
                                         onClick={(e) => handleSmoothScroll(e, item.url, closeToggle, setActiveHash)}
-                                        className={`${ activeHash === item.url ? 'active' : '' }`}
+                                        className={`${ activeHash === item.url ? 'active' : 'group-hover:text-cyan-400' }`}
                                     >
                                         <li>{item.title}</li>
                                         {
-                                            activeHash === item.url && (
+                                            activeHash === item.url ? (
                                                 <div className='w-[25px] h-[3px] rounded-full bg-gray-100 mx-2 active-line'></div>
+                                            ) : (
+                                                <div className='group-hover:w-[25px] group-hover:h-[3px] group-hover:rounded-full group-hover:bg-cyan-400 group-hover:mx-2 group-hover:active-line'></div>
                                             )
                                         }
                                     </Link>

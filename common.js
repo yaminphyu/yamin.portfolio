@@ -1,16 +1,19 @@
-import { useEffect } from "react";
+import { use, useEffect } from "react";
 
 /* eslint-disable react-hooks/exhaustive-deps */
 export const handleSmoothScroll = (e, id, closeSidebar, setActiveHash) => {
     e.preventDefault();
-
-    const hash_code = id?.split('#')[1];
 
     // Close the sidebar if a close function is provided
     if (closeSidebar) {
         closeSidebar();
     }
 
+    handleScroll(id, setActiveHash);
+};
+
+export const handleScroll = (id, setActiveHash) => {
+    const hash_code = id?.split('#')[1];
     setTimeout(() => {
         if (hash_code === 'hero') {
             window.scrollTo({ top: 0, behavior: "smooth" })
@@ -23,7 +26,7 @@ export const handleSmoothScroll = (e, id, closeSidebar, setActiveHash) => {
                 window.history.pushState(null, '', `#${hash_code}`);
             }
         }
-    }, 700); // Adjust the delay to match the sidebar closing animation time
+    }, 500); // Adjust the delay to match the sidebar closing animation time
 };
 
 export const useOutsideAlerter = (ref, closeToggle) => {
@@ -41,3 +44,14 @@ export const useOutsideAlerter = (ref, closeToggle) => {
         };
     }, [ref]);
 };
+
+export const useScrollUrlActive = (id, isRefVisible) => {
+    useEffect (() => {
+        if (!isRefVisible) {
+            window.history.pushState(null, '', '/');
+            return;
+        }
+
+        window.history.pushState(null, '', `#${id}`);
+    }, [isRefVisible]);
+}
