@@ -16,16 +16,21 @@ export default function CustomCursor({ children }) {
     };
 
     return (
-        <div onMouseMove={mouseHandle}>
-            <div
-                id="custom_cursor"
-                style={{
-                top: textLength.top,
-                left: textLength.left
-                }}
-            >
+        <>
+            <div onMouseMove={mouseHandle} className='hidden md:block'>
+                <div
+                    id="custom_cursor"
+                    style={{
+                    top: textLength.top,
+                    left: textLength.left
+                    }}
+                >
+                </div>
+                {children}
             </div>
-            {children}
-        </div>
+            <div className='block md:hidden'>
+                {children}
+            </div>
+        </>
     );
 }
