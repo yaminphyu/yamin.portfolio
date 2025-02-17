@@ -3,7 +3,7 @@ import { useRef } from "react";
 
 export const FadeIn = ({ children, delay, styleName }) => {
     const ref = useRef(null);
-    const isVisible = useAnimation({ targetRef: ref });
+    const { isVisible } = useAnimation({ targetRef: ref });
 
     return (
         <div
