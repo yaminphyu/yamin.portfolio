@@ -42,3 +42,35 @@ h1,
 .active {
   font-size: 18px;
 }
+
+#custom_cursor {
+  pointer-events: none;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  animation: 10s linear animateWrapper infinite;
+  &::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 3000;
+    mix-blend-mode: difference;
+  }
+  @keyframes animateWrapper {
+    0% {
+      rotate: 0deg;
+    }
+    100% {
+      rotate: 360deg;
+    }
+  }
+}
