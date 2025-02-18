@@ -119,7 +119,7 @@ export const workExperiences = [
         company: 'Infinity Informations & App Dev Co.,Ltd',
         location: 'BKK1, Phnom Penh, Cambodia.',
         logo: '/work-exp/infinity.png',
-        description: 'Expertise in Responsive Design, API Integration, and Feature Development',
+        description: 'Specializing in responsive design, API integration, and feature development using React.js and Next.js. Experienced in creating and maintaining user-friendly UIs, integrating data with APIs, and implementing new features. Notable contributions include developing a banking information feature, registration with SMS QR scanning, and managing UI updates while fixing bugs to enhance user experience.',
     },
     {
         id: 2,
