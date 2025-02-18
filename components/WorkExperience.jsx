@@ -16,7 +16,7 @@ export default function WorkExperience() {
         <section
             ref={workRef}
             id='work-experience'
-            className={`!h-full md:!h-screen ${indexStyles.container}`}
+            className={`!h-full ${indexStyles.container}`}
         >
             <div className={styles.wrapper}>
                 <h1 className={indexStyles.title}>

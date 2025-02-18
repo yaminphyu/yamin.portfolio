@@ -16,11 +16,6 @@ export const menu = [
     },
     {
         id: 4,
-        title: 'Portfolio',
-        url: '/#portfolio'
-    },
-    {
-        id: 5,
         title: 'Contact',
         url: '/#contact'
     },
