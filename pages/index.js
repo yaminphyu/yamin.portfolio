@@ -7,6 +7,7 @@ import Skills from "@/components/Skills";
 import WorkExperience from "@/components/WorkExperience";
 import { FaArrowUpLong } from "react-icons/fa6";
 import styles from '@/styles/Index.module.css';
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Skills />
         <WorkExperience />
         <Contact />
+        <Footer />
       </div>
       <div
         className={styles['scroll-up']}
