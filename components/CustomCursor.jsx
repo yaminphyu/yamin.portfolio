@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function CustomCursor({ children }) {
-    const [textLength, setTextLength] = useState({
+    const [cursorPosition, setCursorPosition] = useState({
         top: 0,
         left: 0
     });
@@ -9,7 +9,7 @@ export default function CustomCursor({ children }) {
     const mouseHandle = (e) => {
         let x = e.pageX;
         let y = e.pageY;
-        setTextLength({
+        setCursorPosition({
             top: y - 100 + "px",
             left: x - 100 + "px"
         });
@@ -17,18 +17,18 @@ export default function CustomCursor({ children }) {
 
     return (
         <>
-            <div onMouseMove={mouseHandle} className='hidden md:block'>
+            <div onMouseMove={mouseHandle} className='hidden lg:block w-full h-full'>
                 <div
                     id="custom_cursor"
                     style={{
-                    top: textLength.top,
-                    left: textLength.left
+                        top: cursorPosition.top,
+                        left: cursorPosition.left
                     }}
                 >
                 </div>
                 {children}
             </div>
-            <div className='block md:hidden'>
+            <div className='block lg:hidden w-full h-full'>
                 {children}
             </div>
         </>
