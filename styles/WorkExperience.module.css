@@ -31,11 +31,16 @@
 }
 
 .company {
+    @apply text-gray-200;
+}
+
+.company,
+.title {
     @apply text-lg md:text-xl font-semibold;
 }
 
 .location {
-    @apply text-base md:text-lg font-semibold;
+    @apply text-sm md:text-base font-semibold text-gray-200;
 }
 
 .description {

@@ -16,7 +16,7 @@ export default function WorkExperience() {
         <section
             ref={workRef}
             id='work-experience'
-            className={`!h-full md:!h-screen ${indexStyles.container}`}
+            className={`!h-full ${indexStyles.container}`}
         >
             <div className={styles.wrapper}>
                 <h1 className={indexStyles.title}>
@@ -57,6 +57,7 @@ export default function WorkExperience() {
                                             <div className={styles['title-wrapper']}>
                                                 <h2 className={styles.company}>{item.company}</h2>
                                                 <h4 className={styles.location}>{item.location}</h4>
+                                                <h4 className={styles.title}>{item.title}</h4>
                                             </div>
                                             <p className={styles.description}>{item.description}</p>
                                         </div>
